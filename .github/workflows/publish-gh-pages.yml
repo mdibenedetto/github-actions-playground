@@ -3,8 +3,8 @@ name: Publish GH-PAGES
 on:
   push:
     branches: [main]
-    paths:
-      - "src/index.html"
+    # paths:
+    #   - "src/index.html"
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -21,15 +21,9 @@ jobs:
           GH_PAGES_DOMAIN: ${{ github.repository_owner }}.github.io
         run: |
           REPO_FOLDER_NAME=${REPOSITORY#$OWNER/}
-          echo "https://$GH_PAGES_DOMAIN/$REPO_FOLDER_NAME"
-        # store owner
-        # store name
-        # $github.repository=mdibenedetto/github-actions-playground
-        # github.repository_owner=mdibenedetto
-        # linkName=$github.repository_owner + .github.io
-        # replace in name the `owner` such replace($github.repository, $github.repository_owner, )
-        # https://mdibenedetto.github.io/github-actions-playground/
-
+          echo $REPO_FOLDER_NAME  
+          echo ${REPOSITORY#$OWNER/}
+        # echo "https://$GH_PAGES_DOMAIN/$REPO_FOLDER_NAME"
       # - name: Set Github user
       #   run: |
       #     git config user.name github-actions

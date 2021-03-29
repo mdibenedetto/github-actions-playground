@@ -1,7 +1,9 @@
-on: push
+name: Print Github Attributes
+
+workflow_dispatch:
 
 jobs:
-  one:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
