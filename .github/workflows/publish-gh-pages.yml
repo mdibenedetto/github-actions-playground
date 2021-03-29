@@ -15,26 +15,25 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+      - name: Set Github user
       - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
 
-      - name: Install
+      - name: Install dependencies
         run: npm i
 
-      - name: Build
+      - name: Create Build
         run: npm run build
 
       - name: List Disist files
         run: |
           ls -d ./dist/**
-
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
 
       - name: Checkout Gh-Pages
         run: git fetch && git checkout gh-pages
