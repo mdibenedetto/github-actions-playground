@@ -17,8 +17,19 @@ jobs:
 
       - name: Dump GitHub context
         env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
+          REPOSITORY: ${{ github.repository }}
+          OWNER: ${{ github.repository_owner }}
+          GH_PAGES_DOMAIN: ${{ $github.repository_owner }}.github.io
+          # ghLink:
+        run: |
+          echo "$GH_PAGES_DOMAIN"
+        # store owner
+        # store name
+        # $github.repository=mdibenedetto/github-actions-playground
+        # github.repository_owner=mdibenedetto
+        # linkName=$github.repository_owner + .github.io
+        # replace in name the `owner` such replace($github.repository, $github.repository_owner, )
+        # https://mdibenedetto.github.io/github-actions-playground/
 
       - name: Set Github user
         run: |
