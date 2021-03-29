@@ -18,14 +18,9 @@ jobs:
       - name: Dump GitHub context
         env:
           REPOSITORY: ${{ github.repository }}
-          GH_PAGES_DOMAIN: ${{ github.repository_owner }}.github.io
-          pippo: ${{ github.repository.replace(github.repository_owner, github.repository_owner + '.github.io' )  }}
-        run: |
-          REPO_FOLDER_NAME=${REPOSITORY#$OWNER/}
-          echo $REPO_FOLDER_NAME  
-          echo ${REPOSITORY#$OWNER/}
-          echo $pippo
-        # echo "https://$GH_PAGES_DOMAIN/$REPO_FOLDER_NAME"
+          REPOSITORY_NAME: ${{ github.repository.name }}
+          GH_PAGES_DOMAIN: https://${{ github.repository_owner }}.github.io
+        run: echo "$GH_PAGES_DOMAIN/$REPOSITORY_NAME"
       # - name: Set Github user
       #   run: |
       #     git config user.name github-actions
