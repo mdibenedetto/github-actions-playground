@@ -31,7 +31,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Gh-Pages
+      - name: Checkout Gh-Pages
         run: git fetch && git checkout gh-pages
 
       - name: Add dist folder
