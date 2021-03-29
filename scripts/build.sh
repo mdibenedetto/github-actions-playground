@@ -3,7 +3,7 @@
 #   prepare dist folder
 rm -rf  dist
 mkdir dist
-cp ./src/** ./dist 
+cp -rf ./src/** ./dist
 
 # process dist folder
 
