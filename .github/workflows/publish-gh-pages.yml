@@ -3,8 +3,8 @@ name: Publish GH-PAGES
 on:
   push:
     branches: [main]
-    # paths:
-    #   - "src/index.html"
+    paths:
+      - "src/index.html"
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -13,36 +13,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Dump GitHub context
+      - name: Set Github user
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Create Build
+        run: npm run build
+
+      - name: List Disist files
+        run: |
+          ls -d ./dist/**
+
+      - name: Checkout Gh-Pages
+        run: git fetch && git checkout gh-pages
+
+      - name: Add dist folder
+        run: |
+          git add ./dist/**
+          git mv --force ./dist/** ./
+          git add -u ./
+          git commit -m "New update"
+          git push
+
+      - name: Print web url
         env:
           REPOSITORY: ${{ github.repository }}
           REPOSITORY_NAME: ${{ github.event.repository.name }}
           GH_PAGES_DOMAIN: https://${{ github.repository_owner }}.github.io
         run: echo "$GH_PAGES_DOMAIN/$REPOSITORY_NAME"
-      # - name: Set Github user
-      #   run: |
-      #     git config user.name github-actions
-      #     git config user.email github-actions@github.com
-
-      # - name: Install dependencies
-      #   run: npm i
-
-      # - name: Create Build
-      #   run: npm run build
-
-      # - name: List Disist files
-      #   run: |
-      #     ls -d ./dist/**
-
-      # - name: Checkout Gh-Pages
-      #   run: git fetch && git checkout gh-pages
-
-      # - name: Add dist folder
-      #   run: |
-      #     git add ./dist/**
-      #     git mv --force ./dist/** ./
-      #     git add -u ./
-      #     git commit -m "New update"
-      #     git push
