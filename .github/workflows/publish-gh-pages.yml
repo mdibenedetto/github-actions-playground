@@ -18,11 +18,10 @@ jobs:
       - name: Dump GitHub context
         env:
           REPOSITORY: ${{ github.repository }}
-          OWNER: ${{ github.repository_owner }}
           GH_PAGES_DOMAIN: ${{ github.repository_owner }}.github.io
           # ghLink:
         run: |
-          echo "$GH_PAGES_DOMAIN"
+          echo ${REPOSITORY/$OWNER/$GH_PAGES_DOMAIN}
         # store owner
         # store name
         # $github.repository=mdibenedetto/github-actions-playground
