@@ -6,4 +6,4 @@ This repo contains an implementation of simple Github action to build and publis
 
 ## Preview App
 
-[GH-Page - Demo link]( https://mdibenedetto.github.io/gitub-actions-playground)
+[GH-Page - Demo link]( https://mdibenedetto.github.io/github-actions-playground)
