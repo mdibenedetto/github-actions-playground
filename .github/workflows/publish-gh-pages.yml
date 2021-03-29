@@ -18,7 +18,7 @@ jobs:
       - name: Dump GitHub context
         env:
           REPOSITORY: ${{ github.repository }}
-          REPOSITORY_NAME: ${{ github.repository.name }}
+          REPOSITORY_NAME: ${{ github.event.repository.name }}
           GH_PAGES_DOMAIN: https://${{ github.repository_owner }}.github.io
         run: echo "$GH_PAGES_DOMAIN/$REPOSITORY_NAME"
       # - name: Set Github user
