@@ -3,7 +3,7 @@
 #   prepare dist folder
 rm -rf  dist
 mkdir dist
-cp ./src/index.html ./dist
+cp ./src/** ./dist 
 
 # process dist folder
 
