@@ -29,11 +29,12 @@ jobs:
         run: |
           ls -d ./dist/**
 
-      publish:
-        needs: build
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v2
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
 
       - name: Checkout Gh-Pages
         run: git fetch && git checkout gh-pages
