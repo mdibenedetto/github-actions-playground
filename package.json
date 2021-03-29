@@ -8,7 +8,7 @@
     "lite-server": "^2.6.1"
   },
   "scripts": {
-    "start": "lite-server ./src/index.html",
+    "start": "cd src && lite-server",
     "build": "sh ./scripts/build.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
