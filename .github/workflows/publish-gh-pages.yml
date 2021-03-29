@@ -19,7 +19,7 @@ jobs:
         env:
           REPOSITORY: ${{ github.repository }}
           OWNER: ${{ github.repository_owner }}
-          GH_PAGES_DOMAIN: ${{ $github.repository_owner }}.github.io
+          GH_PAGES_DOMAIN: ${{ github.repository_owner }}.github.io
           # ghLink:
         run: |
           echo "$GH_PAGES_DOMAIN"
@@ -31,28 +31,28 @@ jobs:
         # replace in name the `owner` such replace($github.repository, $github.repository_owner, )
         # https://mdibenedetto.github.io/github-actions-playground/
 
-      - name: Set Github user
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+      # - name: Set Github user
+      #   run: |
+      #     git config user.name github-actions
+      #     git config user.email github-actions@github.com
 
-      - name: Install dependencies
-        run: npm i
+      # - name: Install dependencies
+      #   run: npm i
 
-      - name: Create Build
-        run: npm run build
+      # - name: Create Build
+      #   run: npm run build
 
-      - name: List Disist files
-        run: |
-          ls -d ./dist/**
+      # - name: List Disist files
+      #   run: |
+      #     ls -d ./dist/**
 
-      - name: Checkout Gh-Pages
-        run: git fetch && git checkout gh-pages
+      # - name: Checkout Gh-Pages
+      #   run: git fetch && git checkout gh-pages
 
-      - name: Add dist folder
-        run: |
-          git add ./dist/**
-          git mv --force ./dist/** ./
-          git add -u ./
-          git commit -m "New update"
-          git push
+      # - name: Add dist folder
+      #   run: |
+      #     git add ./dist/**
+      #     git mv --force ./dist/** ./
+      #     git add -u ./
+      #     git commit -m "New update"
+      #     git push
